@@ -1,0 +1,47 @@
+# Node.js (Backend & Frontend)
+node_modules/
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# Vite (React Frontend)
+frontend/dist/
+frontend/.env
+frontend/.vite/
+frontend/.parcel-cache/
+frontend/.turbo/
+frontend/.next/
+frontend/.nuxt/
+
+# Tailwind CSS
+frontend/tailwind.css
+
+# Build & Cache
+dist/
+.cache/
+*.cache
+out/
+.next/
+.nuxt/
+
+# Logs
+logs/
+*.log
+yarn-error.log
+pnpm-debug.log
+bun-error.log
+
+# OS & Editor-specific files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.iml
+
+# Misc
+.env
+.env.local
+.env.production
+.env.development
+.env.test
