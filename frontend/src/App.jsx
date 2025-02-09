@@ -1,10 +1,9 @@
-import React from 'react';
+import AppRoutes from './routes';
 
 function App() {
   return (
-    <div className="app">
-      <h1 className='text-blue-400'>Welcome to Vite + React</h1>
-      <p>Start building your awesome app!</p>
+    <div>
+      <AppRoutes />
     </div>
   );
 }
