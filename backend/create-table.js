@@ -1,22 +1,22 @@
 // this file creates tables into the database
 require("dotenv").config();
-const db = require('./db');
+const db = require("./db");
 
 async function createTables() {
     try {
-        // Creates a 'members' table
+        // Creates a 'S' table
         await db.query(`
-            CREATE TABLE IF NOT EXISTS admins (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                admin VARCHAR(255) NOT NULL UNIQUE,
-                email VARCHAR(255) NOT NULL UNIQUE,
-                password VARCHAR(255) NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
+            CREATE TABLE IF NOT EXISTS receipts (
+                receipt_id INT AUTO_INCREMENT PRIMARY KEY,
+                payment_id INT NOT NULL,
+                user_id INT NOT NULL,
+                receipt_number VARCHAR(100) UNIQUE NOT NULL, 
+                issued_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (payment_id) REFERENCES payments(payment_id),
+                FOREIGN KEY (user_id) REFERENCES users(user_id)
+            );
         `);
-        console.log("Table 'members' created or already exists.");
-
-
+        console.log("Table 'receipts' created or already exists.");
     } catch (err) {
         console.error("Error creating tables:", err);
     } finally {

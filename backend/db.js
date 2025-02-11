@@ -1,6 +1,7 @@
 require("dotenv").config(); // Load environment variables
 const mysql = require('mysql2');
 
+
 // Create a connection pool
 const pool = mysql.createPool({
     connectionLimit: 10,
@@ -12,7 +13,7 @@ const pool = mysql.createPool({
 });
 
 // Convert pool to use Promises (to avoid callback hell)
-const promisePool = pool.promise();
+const db = pool.promise();
 
 // Graceful shutdown on app termination
 process.on('SIGINT', () => {
@@ -26,4 +27,4 @@ process.on('SIGINT', () => {
     });
 });
 
-module.exports = promisePool;
+module.exports = db;
