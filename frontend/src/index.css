@@ -3,5 +3,15 @@
 
 @theme {
   --font-primary: "Manrope", serif;
-  --font-secondary: "IBM Plex Mono", serif;
+  --color-text: #232323;
+  --color-secondary-text:#8A9A9A;
+  --color-nav:#E9F2F4;
+  --color-light:#F5F9FA;
+  --color-dark:#2A8E9E;
+  --color-button-hover:#69C9C1;
+  --color-button:#1A5F5E;
+}
+
+body{
+  background-color:#F5F9FA;
 }
