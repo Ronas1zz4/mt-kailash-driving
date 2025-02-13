@@ -35,11 +35,11 @@ const register = async (req, res) => {
 
         // Generate verification token
         const verificationToken = jwt.sign({
-            email,
-        },
+                email,
+            },
             process.env.JWT_SECRET, {
-            expiresIn: "1h",
-        }
+                expiresIn: "1h",
+            }
         );
         console.log("verificationToken:", verificationToken);
 
@@ -130,7 +130,7 @@ const login = async (req, res) => {
                 message: "Please verify your email first",
             });
         }
-    
+        00
 
         // Compare passwords
         const isMatch = await bcrypt.compare(password, user.password);
@@ -143,12 +143,12 @@ const login = async (req, res) => {
 
         // Generate JWT
         const token = jwt.sign({
-            userId: user.id,
-            email: user.email,
-        },
+                userId: user.id,
+                email: user.email,
+            },
             process.env.JWT_SECRET, {
-            expiresIn: "1h",
-        }
+                expiresIn: "1h",
+            }
         );
 
         // Send token in the header
