@@ -5,6 +5,7 @@ const cors = require("cors");
 const pool = require("./db.js"); //imports mysql pool
 const authMiddleware = require("./middlewares/authMiddlewares");
 const authRouter = require("./routes/auth");
+const paymentRouter = require("./routes/payment");
 const Classes = require("./models/Classes");
 
 const corsOptions = {
@@ -23,10 +24,11 @@ app.get("/booking-page", authMiddleware, (req, res) => {
 
 // every authentication routing
 app.use("/", authRouter);
+app.use("/", authMiddleware, paymentRouter);
 
-// app.get('/driving-training-schedules', (res, req) => {
 
-// });
+
+
 
 app.post("/create-classes", async (req, res) => {
   try {
