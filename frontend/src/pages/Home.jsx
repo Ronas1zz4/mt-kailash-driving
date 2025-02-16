@@ -1,124 +1,164 @@
-import React from 'react'
+import React, { memo } from "react";
+import Driving from "../assets/driving.jpeg";
+import Certified from "../assets/certified.jpg";
+import Flexible from "../assets/flexible.jpg";
+import Safety from "../assets/safety.jpg";
+import Modern from "../assets/modern.jpg";
+import Teen from "../assets/teen.jpg";
+import Adult from "../assets/adult.jpg";
+
+// Reusable Card Component for the benefits and driving courses
+const Card = memo(({ imgSrc, title, description }) => (
+  <div className="relative flex flex-col items-center bg-white p-6 rounded-3xl shadow-xl hover:shadow-2xl transition-transform transform hover:scale-105">
+    <img
+      src={imgSrc}
+      alt={title}
+      className="w-full h-56 object-cover rounded-2xl mb-6"
+    />
+    <h3 className="text-2xl font-primary font-semibold text-[var(--color-text)] mb-4">
+      {title}
+    </h3>
+    <p className="text-[var(--color-secondary-text)] font-primary">{description}</p>
+  </div>
+));
 
 const Home = () => {
   return (
-    <div className='w-full relative '>
-    <section className="relative w-full h-screen"> 
-    {/* Background Image */}
-    <div
-      className="absolute  bg-cover bg-center"
-      style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?car,driving')" }}
-    ></div>
-    
-    {/* Overlay */}
-    <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-    
-    {/* Content */}
-    <div className="relative  flex flex-col items-center justify-center h-full text-center px-4"> 
-      <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-        Learn to Drive with Confidence!
-      </h1>
-      <p className="text-lg md:text-xl text-gray-300 max-w-2xl">
-        Professional instructors & personalized training to make you road-ready.
-      </p>
-      <button className="mt-6 px-6 py-3 bg-yellow-500 text-black font-semibold rounded-lg text-lg shadow-lg hover:bg-yellow-400 transition">
-        Get Started
-      </button>
+    <div className="w-full relative">
+      {/* Hero Section */}
+      <section className="relative w-full h-screen flex items-center bg-[var(--color-light)] px-6 md:px-12">
+        <div
+          className="absolute inset-0 bg-cover bg-left brightness-50"
+          style={{ backgroundImage: `url(${Driving})` }}
+        ></div>
+
+        <div className="relative w-full max-w-6xl mx-auto text-left px-4 md:px-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-primary font-bold text-white drop-shadow-lg leading-snug">
+            Master the Road with <br /> Confidence
+          </h1>
+          <p className="text-base md:text-lg lg:text-xl text-[var(--color-secondary-text)] mt-4 font-primary drop-shadow-lg">
+            Learn from expert instructors and gain real-road experience to drive
+            with skill, safety, and confidence.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="mt-6 flex flex-wrap gap-3">
+            <button
+              type="button"
+              className="border border-[var(--color-secondary-text)] hover:bg-[var(--color-dark)] hover:border-[var(--color-dark)] text-white hover:text-white px-3 md:px-6 py-2 md:py-3 rounded-2xl text-xs sm:text-sm md:text-base font-primary transition"
+            >
+              Start Learning
+            </button>
+            <button
+              type="button"
+              className="bg-[var(--color-dark)] px-3 md:px-6 py-2 md:py-3 rounded-2xl hover:bg-transparent hover:text-[var(--color-text)] border border-[var(--color-dark)] hover:border-[var(--color-secondary-text)] text-white text-xs sm:text-sm md:text-base font-primary transition"
+            >
+              Explore Courses
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="relative py-16 bg-[var(--color-light)] min-h-screen">
+        <div className="container mx-auto text-center">
+          <h2 className="text-4xl font-primary font-semibold text-[var(--color-text)] mb-8">
+            Why Choose Us?
+          </h2>
+          <p className="text-lg text-[var(--color-secondary-text)] mb-12 max-w-2xl mx-auto font-primary">
+            Whether you're a beginner or looking to sharpen your driving skills,
+            our courses provide personalized lessons, expert guidance, and a
+            focus on safety to ensure you’re road-ready.
+          </p>
+
+          {/* Key Benefits Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+            <Card
+              imgSrc={Certified}
+              title="Certified Instructors"
+              description="Learn from licensed experts who have years of experience guiding students toward safe and confident driving."
+            />
+            <Card
+              imgSrc={Flexible}
+              title="Flexible Scheduling"
+              description="We offer lessons at times that work for you, including weekends, evenings, and fast-track options."
+            />
+            <Card
+              imgSrc={Safety}
+              title="Safety First Approach"
+              description="We focus on defensive driving, equipping you with the skills to handle any situation safely on the road."
+            />
+            <Card
+              imgSrc={Modern}
+              title="Modern Vehicles"
+              description="Learn to drive with the latest cars, equipped with all necessary safety features to ensure a smooth driving experience."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Driving Courses Section */}
+      <section className="py-16 bg-[var(--color-nav)]">
+        <div className="container mx-auto text-center">
+          <h2 className="text-4xl font-primary font-semibold text-[var(--color-text)] mb-12">
+            Our Driving Programs
+          </h2>
+
+          {/* 18+ Driving Course Section */}
+          <div className="flex flex-col md:flex-row items-center justify-between bg-white rounded-lg p-8 mb-12 gap-8">
+            <div className="w-full md:w-1/2 p-6 text-gray-900 rounded-lg flex flex-col justify-center h-[450px]">
+              <h3 className="text-3xl font-primary font-semibold mb-4">
+                Adult Driving Course (18+)
+              </h3>
+              <p className="text-lg mb-6 font-primary">
+                Learn essential driving skills with flexible scheduling and modern vehicles. Get road-ready with professional instructors.
+              </p>
+              <button
+                type="button"
+                className="bg-[var(--color-button)] text-white font-primary text-lg px-8 py-3 rounded-lg shadow-md hover:bg-[var(--color-button-hover)] transition w-48 mx-auto"
+              >
+                Join Now
+              </button>
+            </div>
+            <div className="w-full md:w-1/2 mt-8 md:mt-0">
+              <img
+                src={Adult}
+                alt="Adult Driving Course"
+                className="w-full h-[450px] object-cover rounded-lg shadow-md mb-6 md:mb-0"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          {/* Under 18 Driving Course Section */}
+          <div className="flex flex-col md:flex-row-reverse items-center justify-between bg-white rounded-lg p-8 gap-8">
+            <div className="w-full md:w-1/2 p-6 text-gray-900 rounded-lg flex flex-col justify-center h-[450px]">
+              <h3 className="text-3xl font-primary font-semibold mb-4">
+                Teen Driving Program (Under 18)
+              </h3>
+              <p className="text-lg mb-6 font-primary">
+                Designed for teens to learn safe driving habits, with parental tracking and hands-on experience.
+              </p>
+              <button
+                type="button"
+                className="bg-[var(--color-button)] text-white font-primary text-lg px-8 py-3 rounded-lg shadow-md hover:bg-[var(--color-button-hover)] transition w-48 mx-auto"
+              >
+                Start Now
+              </button>
+            </div>
+            <div className="w-full md:w-1/2 mt-8 md:mt-0">
+              <img
+                src={Teen}
+                alt="Teen Driving Program"
+                className="w-full h-[450px] object-cover rounded-lg shadow-md mb-6 md:mb-0"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
-  <section className="py-12 bg-gray-50">
-      <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-semibold text-gray-800 mb-6">
-          Why Choose Us?
-        </h2>
-        <p className="text-lg text-gray-600 mb-8">
-          At [Your Driving School Name], we stand out because of our dedication to providing the best driving education experience. Whether you're a beginner or looking to refresh your skills, we offer a variety of reasons why you should choose us for your journey to becoming a safe and confident driver.
-        </p>
+  );
+};
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {/* Card 1 - Experienced Instructors */}
-          <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Experienced Instructors</h3>
-            <p className="text-gray-600">
-              Our team consists of certified, experienced, and friendly instructors who are passionate about teaching safe driving techniques. With years of experience, they understand how to guide students through every step of their driving journey.
-            </p>
-          </div>
-
-          {/* Card 2 - Flexible Scheduling */}
-          <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Flexible Scheduling</h3>
-            <p className="text-gray-600">
-              We know that life can be busy. That's why we offer flexible scheduling options that work around your lifestyle. Whether you prefer weekend sessions or evening classes, we've got you covered!
-            </p>
-          </div>
-
-          {/* Card 3 - Road Safety Focus */}
-          <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Road Safety Focus</h3>
-            <p className="text-gray-600">
-              Our driving courses prioritize road safety, defensive driving, and preparing you for all types of driving conditions. We aim to make you not just a good driver, but a responsible one who understands the importance of safety.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section className="py-16 h-screen flex items-center justify-center">
-      <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-semibold text-gray-800 mb-8">
-          Our Driving Courses
-        </h2>
-
-        {/* 18+ Driving Course Section */}
-        <div className="flex flex-col md:flex-row items-center justify-between mb-12">
-          <div className="w-full md:w-1/2 p-6 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg shadow-lg">
-            <h3 className="text-3xl font-semibold mb-4">18+ Driving Course</h3>
-            <p className="text-lg mb-6">
-              This course is designed for adults looking to get their driver's
-              license. We focus on building the necessary skills for safe,
-              confident driving in all road conditions.
-            </p>
-            <ul className="list-inside list-disc text-lg">
-              <li>Personalized lessons tailored to your needs.</li>
-              <li>Flexible scheduling and modern vehicles.</li>
-              <li>Comprehensive road safety training.</li>
-            </ul>
-          </div>
-          <div className="w-full md:w-1/2 mt-8 md:mt-0">
-            <img
-              src="https://via.placeholder.com/600x400?text=18%2B+Course"
-              alt="18+ Course"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
-        </div>
-
-        {/* Under 18 Driving Course Section */}
-        <div className="flex flex-col md:flex-row-reverse items-center justify-between">
-          <div className="w-full md:w-1/2 p-6 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg shadow-lg">
-            <h3 className="text-3xl font-semibold mb-4">Under 18 Driving Course</h3>
-            <p className="text-lg mb-6">
-              Our Under 18 Driving Course is perfect for young learners who are
-              eager to start their journey behind the wheel. We ensure a safe and
-              enjoyable learning experience while preparing them for their future on the road.
-            </p>
-            <ul className="list-inside list-disc text-lg">
-              <li>Fun and interactive lessons tailored for teens.</li>
-              <li>Incorporating parental guidance and progress tracking.</li>
-              <li>Focus on building responsible and safe driving habits.</li>
-            </ul>
-          </div>
-          <div className="w-full md:w-1/2 mt-8 md:mt-0">
-            <img
-              src="https://via.placeholder.com/600x400?text=Under+18+Course"
-              alt="Under 18 Course"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-  )
-}
-
-export default Home
+export default Home;
