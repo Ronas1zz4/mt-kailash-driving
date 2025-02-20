@@ -4,8 +4,8 @@ import Certified from "../assets/certified.jpg";
 import Flexible from "../assets/flexible.jpg";
 import Safety from "../assets/safety.jpg";
 import Modern from "../assets/modern.jpg";
-import Teen from "../assets/teen.jpg";
 import Adult from "../assets/adult.jpg";
+import { Link } from "react-router";
 
 // Reusable Card Component for the benefits and driving courses
 const Card = memo(({ imgSrc, title, description }) => (
@@ -18,7 +18,9 @@ const Card = memo(({ imgSrc, title, description }) => (
     <h3 className="text-2xl font-primary font-semibold text-[var(--color-text)] mb-4">
       {title}
     </h3>
-    <p className="text-[var(--color-secondary-text)] font-primary">{description}</p>
+    <p className="text-[var(--color-secondary-text)] font-primary">
+      {description}
+    </p>
   </div>
 ));
 
@@ -32,7 +34,8 @@ const HeroSection = () => (
 
     <div className="relative w-full max-w-6xl mx-auto text-left px-4 md:px-8">
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-primary font-bold text-white drop-shadow-lg leading-snug">
-        Master the Road with <br /> Confidence
+        Master the Road with <br /> Confidence at
+        <br /> <span className="text-dark"> Mt Kailash Driving Center</span>
       </h1>
       <p className="text-base md:text-lg lg:text-xl text-[var(--color-secondary-text)] mt-4 font-primary drop-shadow-lg">
         Learn from expert instructors and gain real-road experience to drive
@@ -45,13 +48,13 @@ const HeroSection = () => (
           type="button"
           className="border border-[var(--color-secondary-text)] hover:bg-[var(--color-dark)] hover:border-[var(--color-dark)] text-white hover:text-white px-3 md:px-6 py-2 md:py-3 rounded-2xl text-xs sm:text-sm md:text-base font-primary transition"
         >
-          Start Learning
+          Enroll Today
         </button>
         <button
           type="button"
-          className="bg-[var(--color-dark)] px-3 md:px-6 py-2 md:py-3 rounded-2xl hover:bg-transparent hover:text-[var(--color-text)] border border-[var(--color-dark)] hover:border-[var(--color-secondary-text)] text-white text-xs sm:text-sm md:text-base font-primary transition"
+          className="bg-[var(--color-dark)] px-3 md:px-6 py-2 md:py-3 rounded-2xl hover:bg-transparent border border-[var(--color-dark)] hover:border-[var(--color-secondary-text)] text-white text-xs sm:text-sm md:text-base font-primary transition"
         >
-          Explore Courses
+          Explore Course
         </button>
       </div>
     </div>
@@ -60,19 +63,19 @@ const HeroSection = () => (
 
 // Why Choose Us Section
 const WhyChooseUsSection = () => (
-  <section className="relative py-16 bg-[var(--color-light)] min-h-screen">
-    <div className="container mx-auto text-center">
-      <h2 className="text-4xl font-primary font-semibold text-[var(--color-text)] mb-8">
+  <section className="relative py-16 bg-[var(--color-light)] min-h-screen flex justify-center items-center">
+    <div className="container mx-auto text-center px-6 md:px-12">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-primary font-semibold text-[var(--color-text)] mb-6 sm:mb-8">
         Why Choose Us?
       </h2>
-      <p className="text-lg text-[var(--color-secondary-text)] mb-12 max-w-2xl mx-auto font-primary">
-        Whether you're a beginner or looking to sharpen your driving skills,
-        our courses provide personalized lessons, expert guidance, and a
-        focus on safety to ensure you’re road-ready.
+      <p className="text-base sm:text-lg lg:text-xl text-[var(--color-secondary-text)] mb-8 sm:mb-12 max-w-2xl mx-auto font-primary">
+        Whether you're a beginner or looking to sharpen your driving skills, our
+        courses provide personalized lessons, expert guidance, and a focus on
+        safety to ensure you’re road-ready.
       </p>
 
       {/* Key Benefits Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 px-4">
         <Card
           imgSrc={Certified}
           title="Certified Instructors"
@@ -100,59 +103,47 @@ const WhyChooseUsSection = () => (
 
 // Driving Courses Section
 const DrivingCoursesSection = () => (
-  <section className="py-16 bg-[var(--color-nav)]">
+  <section className="py-16">
     <div className="container mx-auto text-center">
-      <h2 className="text-4xl font-primary font-semibold text-[var(--color-text)] mb-12">
-        Our Driving Programs
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-primary font-semibold text-[var(--color-text)] mb-10 sm:mb-8">
+        Our Course
       </h2>
 
-      {/* 18+ Driving Course Section */}
-      <div className="flex flex-col md:flex-row items-center justify-between bg-white rounded-lg p-8 mb-12 gap-8">
-        <div className="w-full md:w-1/2 p-6 text-gray-900 rounded-lg flex flex-col justify-center h-[450px]">
-          <h3 className="text-3xl font-primary font-semibold mb-4">
-            Adult Driving Course (18+)
+      {/* Driving Course Section */}
+      <div className="flex flex-col md:flex-row justify-between bg-white rounded-lg p-8 mb-12 gap-8">
+        {/* Text Content Section */}
+        <div className="w-full md:w-1/2 p-8 md:p-6 text-gray-900 rounded-lg flex flex-col text-left justify-center bg-[var(--color-light)]">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-primary font-semibold mb-4">
+            Teen Driving Course
           </h3>
-          <p className="text-lg mb-6 font-primary">
-            Learn essential driving skills with flexible scheduling and modern vehicles. Get road-ready with professional instructors.
+          <p className="text-sm sm:text-base md:text-lg mb-4 md:mb-6 font-primary">
+            At Mt. Kailash Driving Center, we provide a comprehensive driver
+            education program designed to ensure safety and confidence on the
+            road. Our program consists of{" "}
+            <strong>30 hours of classroom instruction</strong> and{" "}
+            <strong>6 hours of behind-the-wheel training</strong> with
+            experienced instructors. Join us to start your journey toward safe
+            and responsible driving!
           </p>
-          <button
-            type="button"
-            className="bg-[var(--color-button)] text-white font-primary text-lg px-8 py-3 rounded-lg shadow-md hover:bg-[var(--color-button-hover)] transition w-48 mx-auto"
-          >
-            Join Now
-          </button>
+          <ul className="text-sm sm:text-base md:text-lg mb-4 md:mb-6 font-primary list-disc pl-6">
+            <li>Expert Tutors</li>
+            <li>Flexible Schedule</li>
+            <li>In-class Instructions</li>
+            <li>Road Work</li>
+          </ul>
+          <Link to="/schedule">
+            <button className="bg-dark px-6 py-2 rounded hover:bg-transparent hover:text-text border border-dark hover:border-secondary-text text-white text-sm md:text-base font-primary">
+              Enroll Now
+            </button>
+          </Link>
         </div>
-        <div className="w-full md:w-1/2 mt-8 md:mt-0">
+
+        {/* Image Section */}
+        <div className="relative w-full md:w-1/2 mt-8 md:mt-0">
           <img
             src={Adult}
-            alt="Adult Driving Course"
-            className="w-full h-[450px] object-cover rounded-lg shadow-md mb-6 md:mb-0"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
-      {/* Under 18 Driving Course Section */}
-      <div className="flex flex-col md:flex-row-reverse items-center justify-between bg-white rounded-lg p-8 gap-8">
-        <div className="w-full md:w-1/2 p-6 text-gray-900 rounded-lg flex flex-col justify-center h-[450px]">
-          <h3 className="text-3xl font-primary font-semibold mb-4">
-            Teen Driving Program (Under 18)
-          </h3>
-          <p className="text-lg mb-6 font-primary">
-            Designed for teens to learn safe driving habits, with parental tracking and hands-on experience.
-          </p>
-          <button
-            type="button"
-            className="bg-[var(--color-button)] text-white font-primary text-lg px-8 py-3 rounded-lg shadow-md hover:bg-[var(--color-button-hover)] transition w-48 mx-auto"
-          >
-            Start Now
-          </button>
-        </div>
-        <div className="w-full md:w-1/2 mt-8 md:mt-0">
-          <img
-            src={Teen}
-            alt="Teen Driving Program"
-            className="w-full h-[450px] object-cover rounded-lg shadow-md mb-6 md:mb-0"
+            alt="Teen Driving Course"
+            className="w-full h-auto md:h-[500px] object-cover rounded-lg shadow-md"
             loading="lazy"
           />
         </div>
@@ -160,6 +151,7 @@ const DrivingCoursesSection = () => (
     </div>
   </section>
 );
+
 
 const Home = () => {
   return (
