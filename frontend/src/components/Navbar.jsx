@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router"; // Ensure correct import for React Router
+import { Link, NavLink } from "react-router"; // Ensure correct import for React Router
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/Logo.jpg";
 import Login from "../pages/Login"; // Import Login page
@@ -51,19 +51,18 @@ function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex md:items-center md:w-auto md:order-1">
           <ul className="flex space-x-6">
-            {[
-              { name: "Home", path: "/" },
-              { name: "About", path: "/about" },
-              { name: "Services", path: "/services" },
-              { name: "Contact", path: "/contact" },
-            ].map((item) => (
+            {[{ name: "Home", path: "/" }, { name: "About", path: "/about" }, { name: "Teen Drivers", path: "/teendrivers" }, { name: "Schedule", path: "/schedule" }].map((item) => (
               <li key={item.path}>
-                <Link
+                <NavLink
                   to={item.path}
-                  className="relative text-black hover:text-black after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "relative text-black after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-black after:transition-all after:duration-300"
+                      : "relative text-black hover:text-black after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+                  }
                 >
                   {item.name}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>
@@ -74,20 +73,19 @@ function Navbar() {
       {menuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-dark shadow-lg z-50">
           <ul className="flex flex-col items-center space-y-4 p-4">
-            {[
-              { name: "Home", path: "/" },
-              { name: "About", path: "/about" },
-              { name: "Services", path: "/services" },
-              { name: "Contact", path: "/contact" },
-            ].map((item) => (
+            {[{ name: "Home", path: "/" }, { name: "About", path: "/about" }, { name: "Teen Drivers", path: "/teendrivers" }, { name: "Schedule", path: "/schedule" }].map((item) => (
               <li key={item.path}>
-                <Link
+                <NavLink
                   to={item.path}
-                  className="relative text-white hover:text-black after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "relative text-white after:absolute after:left-0 after:bottom-[-4px] after:w-full after:h-[2px] after:bg-white after:transition-all after:duration-300"
+                      : "relative text-white hover:text-black after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[2px] after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+                  }
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.name}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>
@@ -111,7 +109,9 @@ function Navbar() {
 
             {/* Toggle between Login and Signup */}
             <p className="text-center text-sm mt-3">
-              {isLogin ? "Don't have an account? " : "Already have an account? "}
+              {isLogin
+                ? "Don't have an account? "
+                : "Already have an account? "}
               <span
                 className="text-blue-600 cursor-pointer"
                 onClick={() => setIsLogin(!isLogin)}
