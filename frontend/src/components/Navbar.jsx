@@ -11,21 +11,25 @@ function Navbar() {
   const [isLogin, setIsLogin] = useState(true); // Toggle between Login & Signup
 
   return (
-    <nav className="bg-nav fixed w-full z-50 top-0 left-0 font-primary shadow-md">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="bg-nav fixed w-full z-50 top-0 left-0 font-primary shadow-md py-2 md:py-3 lg:py-4">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-3">
-          <img src={Logo} className="h-auto max-h-10 w-auto" alt="Logo" />
+        <Link to="/" className="flex items-center space-x-2">
+          <img
+            src={Logo}
+            className="h-auto max-h-6 lg:max-h-8 w-auto"
+            alt="Logo"
+          />
         </Link>
 
         {/* Right Section: Login & Signup Buttons */}
-        <div className="flex md:order-2 space-x-3">
+        <div className="flex md:order-2 space-x-2 sm:space-x-4">
           <button
             onClick={() => {
               setIsLogin(true);
               setIsModalOpen(true);
             }}
-            className="border border-secondary-text hover:bg-dark hover:border hover:border-dark hover:text-white px-6 py-2 rounded-2xl text-sm md:text-base"
+            className="border border-secondary-text hover:bg-dark hover:border hover:border-dark hover:text-white px-3 sm:px-4 py-1 sm:py-2 rounded-2xl text-xs sm:text-sm lg:text-sm"
           >
             Login
           </button>
@@ -34,7 +38,7 @@ function Navbar() {
               setIsLogin(false);
               setIsModalOpen(true);
             }}
-            className="bg-dark px-6 py-2 rounded-2xl hover:bg-transparent hover:text-text border border-dark hover:border-secondary-text text-white text-sm md:text-base"
+            className="bg-dark px-3 sm:px-4 py-1 sm:py-2 rounded-2xl hover:bg-transparent hover:text-text border border-dark hover:border-secondary-text text-white text-xs sm:text-sm lg:text-sm"
           >
             Sign Up
           </button>
@@ -42,16 +46,21 @@ function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="inline-flex items-center p-2 w-10 h-10 justify-center rounded-lg md:hidden text-secondary-text"
+            className="inline-flex items-center p-2 w-8 h-8 justify-center rounded-lg md:hidden text-secondary-text"
           >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex md:items-center md:w-auto md:order-1">
-          <ul className="flex space-x-6">
-            {[{ name: "Home", path: "/" }, { name: "About", path: "/about" }, { name: "Teen Drivers", path: "/teendrivers" }, { name: "Schedule", path: "/schedule" }].map((item) => (
+          <ul className="flex space-x-4 sm:space-x-6 lg:space-x-8">
+            {[
+              { name: "Home", path: "/" },
+              { name: "About", path: "/about" },
+              { name: "Teen Drivers", path: "/teendrivers" },
+              { name: "Schedule", path: "/schedule" },
+            ].map((item) => (
               <li key={item.path}>
                 <NavLink
                   to={item.path}
@@ -73,7 +82,12 @@ function Navbar() {
       {menuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-dark shadow-lg z-50">
           <ul className="flex flex-col items-center space-y-4 p-4">
-            {[{ name: "Home", path: "/" }, { name: "About", path: "/about" }, { name: "Teen Drivers", path: "/teendrivers" }, { name: "Schedule", path: "/schedule" }].map((item) => (
+            {[
+              { name: "Home", path: "/" },
+              { name: "About", path: "/about" },
+              { name: "Teen Drivers", path: "/teendrivers" },
+              { name: "Schedule", path: "/schedule" },
+            ].map((item) => (
               <li key={item.path}>
                 <NavLink
                   to={item.path}
@@ -108,7 +122,7 @@ function Navbar() {
             {isLogin ? <Login /> : <Signup />}
 
             {/* Toggle between Login and Signup */}
-            <p className="text-center text-sm mt-3">
+            <p className="text-center text-xs sm:text-sm mt-3">
               {isLogin
                 ? "Don't have an account? "
                 : "Already have an account? "}

@@ -60,7 +60,7 @@ const WhyChooseUsSection = () => (
         Our courses provide personalized lessons, expert guidance, and a focus
         on safety to ensure you’re road-ready.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 justify-center items-center max-w-6xl mx-auto">
+      <div className="grid  grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 justify-center items-center max-w-6xl mx-auto">
         <Card
           imgSrc={Certified}
           title="Certified Instructors"
