@@ -11,7 +11,7 @@ function Navbar() {
   const [isLogin, setIsLogin] = useState(true); // Toggle between Login & Signup
 
   return (
-    <nav className="bg-nav fixed w-full z-50 top-0 left-0 font-primary shadow-md py-2 md:py-3 lg:py-4">
+    <nav className="bg-nav fixed w-full z-50 top-0 left-0 font-primary shadow-md py-1 md:py-3 lg:py-3">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
