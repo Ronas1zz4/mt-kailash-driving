@@ -4,6 +4,7 @@ import About from './pages/About';
 import NotFound from './pages/NotFound';
 import TeenDrivers from './pages/TeenDrivers';
 import Schedule from './pages/Schedule';
+import ReservationPage from './pages/ReservationPage';
 import SuccessPage from './pages/SuccessPage'; // Import SuccessPage
 
 
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Route path="/teendrivers" element={<TeenDrivers />} />
       <Route path="/schedule" element={<Schedule/>} />
       <Route path="/success" element={<SuccessPage />} /> {/* Add this route */}
+      <Route path="/schedule/:class_id" element={<ReservationPage />} />
       <Route path="*" element={<NotFound />} /> 
     </Routes>
   );

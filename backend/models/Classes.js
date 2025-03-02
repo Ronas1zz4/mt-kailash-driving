@@ -1,5 +1,4 @@
 const db = require("../db");
-
 class Classes {
     static async create({
         class_name,
@@ -52,10 +51,9 @@ class Classes {
         }
     }
 
-    static async updateCurrentCapacity(class_id, new_capacity) {
+    static async updateCurrentCapacity(class_id) {
         try {
-            await db.query("UPDATE classes SET current_capacity = ? WHERE class_id = ?", [new_capacity, class_id]);
-            console.log(`Class ${class_id} updated with new capacity: ${new_capacity}`);
+            await db.query("UPDATE classes SET current_capacity = current_capacity + 1 WHERE class_id = ?", [class_id]);
         } catch (error) {
             console.error("Error updating class capacity:", error);
             throw error;

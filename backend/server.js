@@ -5,8 +5,10 @@ const cors = require("cors");
 const pool = require("./db.js"); //imports mysql pool
 const authMiddleware = require("./middlewares/authMiddlewares");
 const authRouter = require("./routes/auth");
+const userdetail = require("./routes/userdetail");
+
 const paymentRouter = require("./routes/payment");
-const Classes = require("./models/Classes");
+const classes = require("./routes/classesroute");
 
 const corsOptions = {
   origin: "http://localhost:5173",
@@ -24,7 +26,10 @@ app.get("/booking-page", authMiddleware, (req, res) => {
 
 // every authentication routing
 app.use("/", authRouter);
-app.use("/", authMiddleware, paymentRouter);
+app.use("/", classes);
+app.use("/", userdetail);
+
+app.use("/", paymentRouter);
 
 
 
