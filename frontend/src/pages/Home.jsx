@@ -8,7 +8,7 @@ import Adult from "../assets/adult.jpg";
 import { Link } from "react-router";
 
 const Card = memo(({ imgSrc, title, description }) => (
-  <div className="relative flex flex-col items-center bg-white p-4 sm:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 w-full max-w-xs">
+  <div className="relative flex flex-col items-center bg-white p-4 sm:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 w-full">
     <img
       src={imgSrc}
       alt={title}
@@ -24,7 +24,7 @@ const Card = memo(({ imgSrc, title, description }) => (
 ));
 
 const HeroSection = () => (
-  <section className="relative w-full h-screen flex items-center bg-[var(--color-light)] px-4 sm:px-8 md:px-12">
+  <section className="relative max-w-full h-screen flex items-center bg-[var(--color-light)] px-4 sm:px-8 md:px-12">
     <div
       className="absolute inset-0 bg-cover bg-left brightness-50"
       style={{ backgroundImage: `url(${Driving})` }}
@@ -51,7 +51,7 @@ const HeroSection = () => (
 );
 
 const WhyChooseUsSection = () => (
-  <section className="relative py-10 bg-[var(--color-light)] flex justify-center items-center min-h-screen lg:min-h-[100vh]">
+  <section className=" max-w-full relative py-10 bg-[var(--color-light)] flex justify-center items-center min-h-screen lg:min-h-[100vh]">
     <div className="container mx-auto text-center px-4 sm:px-6">
       <h2 className="text-xl sm:text-2xl md:text-3xl font-primary font-semibold text-[var(--color-text)] mb-4">
         Why Choose Us?
@@ -87,7 +87,7 @@ const WhyChooseUsSection = () => (
 );
 
 const DrivingCoursesSection = () => (
-  <section className="py-10">
+  <section className="max-w-full py-10">
     <div className="container mx-auto text-center">
       <h2 className="text-xl sm:text-2xl md:text-3xl font-primary font-semibold text-[var(--color-text)] mb-6">
         Our Course
@@ -130,7 +130,7 @@ const DrivingCoursesSection = () => (
 
 const Home = () => {
   return (
-    <div className="w-full relative">
+    <div className="max-w-full relative">
       <HeroSection />
       <WhyChooseUsSection />
       <DrivingCoursesSection />

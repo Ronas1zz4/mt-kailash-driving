@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const TeenDrivers = () => {
-  return (
-    <div>TeenDrivers</div>
-  )
-}
+  return <div>TeenDrivers</div>;
+};
 
-export default TeenDrivers
+export default TeenDrivers;
