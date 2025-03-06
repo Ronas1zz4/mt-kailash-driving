@@ -147,7 +147,7 @@ const Schedule = () => {
               </div>
             ))
           ) : (
-            <p className="text-gray-500">No open classes available.</p>
+            <p className="text-gray-500">No classes available.</p>
           )}
         </div>
       </div>
