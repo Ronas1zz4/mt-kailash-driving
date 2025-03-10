@@ -89,7 +89,7 @@ const TeenDriversPage = () => {
       </section>
 
       {/* Requirements Section */}
-      <section className="w-full py-6  md:py-12">
+      <section className="w-full py-6 max-w-5xl mx-auto">
         <div className="container px-4 md:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-2xl sm:text-2xl md:text-3xl font-primary font-semibold text-[var(--color-text)] mb-2 md:mb-4 text-left md:text-center">
