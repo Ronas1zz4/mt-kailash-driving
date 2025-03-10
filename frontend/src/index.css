@@ -4,14 +4,14 @@
 @theme {
   --font-primary: "Manrope", serif;
   --color-text: #232323;
-  --color-secondary-text:#8A9A9A;
-  --color-nav:#E9F2F4;
-  --color-light:#F5F9FA;
-  --color-dark:#2A8E9E;
-  --color-button-hover:#69C9C1;
-  --color-button:#1A5F5E;
+  --color-secondary-text: #8a9a9a;
+  --color-nav: #e9f2f4;
+  --color-light: #f5f9fa;
+  --color-dark: #2a8e9e;
+  --color-button-hover: #69c9c1;
+  --color-button: #1a5f5e;
 }
 
-body{
-  background-color:#F5F9FA;
+body {
+  background-color: #f5f9fa;
 }

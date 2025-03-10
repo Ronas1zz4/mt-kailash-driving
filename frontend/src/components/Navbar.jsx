@@ -12,7 +12,7 @@ function Navbar() {
 
   return (
     <nav className="bg-nav fixed w-full z-50 top-0 left-0 font-primary shadow-md py-1 md:py-3 lg:py-3">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+      <div className="max-w-screen-xl flex justify-between mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
           <img
@@ -23,26 +23,7 @@ function Navbar() {
         </Link>
 
         {/* Right Section: Login & Signup Buttons */}
-        <div className="flex md:order-2 space-x-2 sm:space-x-4">
-          <button
-            onClick={() => {
-              setIsLogin(true);
-              setIsModalOpen(true);
-            }}
-            className="border border-secondary-text hover:bg-dark hover:border hover:border-dark hover:text-white px-3 sm:px-4 py-1 sm:py-2 rounded-2xl text-xs sm:text-sm lg:text-sm"
-          >
-            Login
-          </button>
-          <button
-            onClick={() => {
-              setIsLogin(false);
-              setIsModalOpen(true);
-            }}
-            className="bg-dark px-3 sm:px-4 py-1 sm:py-2 rounded-2xl hover:bg-transparent hover:text-text border border-dark hover:border-secondary-text text-white text-xs sm:text-sm lg:text-sm"
-          >
-            Sign Up
-          </button>
-
+        <div className="flex md:hidden space-x-2 sm:space-x-4">
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
