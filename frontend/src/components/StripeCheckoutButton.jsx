@@ -147,6 +147,8 @@ const CheckoutForm = ({classId}) => {
       return;
     }
 
+    try{
+
     const response = await fetch("http://localhost:5001/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -161,11 +163,14 @@ const CheckoutForm = ({classId}) => {
     });
 
     const result = await response.json();
-    if (result.error) {
-      setError(result.error);
+    if (result.success) {
+      window.location.href = result.redirectUrl;
     } else {
-      alert("Payment successful!");
+      alert("Payment error!");
     }
+  }catch(err){
+    setError("An error occurred. Please try again.");
+  }
     setLoading(false);
   };
 

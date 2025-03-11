@@ -5,7 +5,7 @@ import NotFound from './pages/NotFound';
 import TeenDrivers from './pages/TeenDrivers';
 import Schedule from './pages/Schedule';
 import ReservationPage from './pages/ReservationPage';
-import SuccessPage from './pages/SuccessPage'; // Import SuccessPage
+import PaymentSuccess from './pages/SuccessPage'; // Import SuccessPage
 
 
 const AppRoutes = () => {
@@ -15,7 +15,7 @@ const AppRoutes = () => {
       <Route path="/about" element={<About />} />
       <Route path="/teendrivers" element={<TeenDrivers />} />
       <Route path="/schedule" element={<Schedule/>} />
-      <Route path="/success" element={<SuccessPage />} /> {/* Add this route */}
+      <Route path="/payment-success/:receiptId" element={<PaymentSuccess />} /> {/* Add this route */}
       <Route path="/schedule/:class_id" element={<ReservationPage />} />
       <Route path="*" element={<NotFound />} /> 
     </Routes>
