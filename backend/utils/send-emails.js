@@ -9,12 +9,14 @@ const sendVerificationEmail = async (receipt_id, reservationId, amount, receipt_
         to: userEmail,
         from: process.env.EMAIL_FROM, // Your verified sender email in SendGrid
         subject: "Your Reciept",
-        html: `Reciept number     : ${receipt_number}`,
-        html: `User Enail         : ${userEmail}`,
-        html: `Receipt Id         : ${receipt_id}`,
-        html: `Amount             : ${amount}`,
-        html: `Reservation Id     : ${reservationId}`,
-        html: `Reservation status : ${status}`,
+        html: `
+        <p><strong>Receipt number</strong>: ${receipt_number}</p>
+        <p><strong>User Email</strong>: ${userEmail}</p>
+        <p><strong>Receipt Id</strong>: ${receipt_id}</p>
+        <p><strong>Amount</strong>: ${amount}</p>
+        <p><strong>Reservation Id</strong>: ${reservationId}</p>
+        <p><strong>Reservation status</strong>: ${status}</p>
+    `,
     };
 
     try {
