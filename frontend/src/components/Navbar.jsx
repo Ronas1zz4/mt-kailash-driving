@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router"; // Ensure correct import for React Router
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/Logo.jpg";
-import Login from "../pages/Login"; // Import Login page
-import Signup from "../pages/Signup"; // Import Signup page
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
