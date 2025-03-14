@@ -26,7 +26,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ["./src/routes/*.js"], // Path to API docs (Adjust based on your structure)
+  apis: ["./src/routes/*.js"],
 };
 
 // Initialize Swagger Docs

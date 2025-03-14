@@ -1,3 +1,5 @@
+const { where } = require("sequelize");
+const { Admin } = require("../models");
 const generateOtp = (n) => {
   const d = new Date();
   const otp = Math.floor(
@@ -17,7 +19,7 @@ const uniqueOtp = async (n = 6) => {
   let isUnique = false;
 
   while (!isUnique) {
-    const user = await User.findOne({ otp });
+    const user = await Admin.findOne({ where: { otp } });
     if (!user) {
       isUnique = true;
     } else {
