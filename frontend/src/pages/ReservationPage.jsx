@@ -1,25 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import CheckoutButton from "../components/StripeCheckoutButton";
 
 const ReservationPage = () => {
   const { class_id } = useParams(); // Get the class_name from the URL
   const [classDetails, setClassDetails] = useState(null);
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: ''
+    firstName: "",
+    lastName: "",
+    email: "",
   });
- 
+
   // Fetch class details based on class_id
   useEffect(() => {
     const fetchClassDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5001/classes/${class_id}`);
+        const response = await fetch(
+          `http://localhost:5001/classes/${class_id}`
+        );
         const data = await response.json();
         setClassDetails(data);
       } catch (error) {
-        console.error('Error fetching class details:', error);
+        console.error("Error fetching class details:", error);
       }
     };
 
@@ -39,23 +41,26 @@ const ReservationPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5001/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          class_id: classDetails.class_id,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:5001/create-checkout-session",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            class_id: classDetails.class_id,
+          }),
+        }
+      );
       const result = await response.json();
       if (result.success) {
-        alert('Reservation successful!');
+        alert("Reservation successful!");
       } else {
-        alert('Reservation failed. Please try again.');
+        alert("Reservation failed. Please try again.");
       }
     } catch (error) {
-      console.error('Error submitting reservation:', error);
+      console.error("Error submitting reservation:", error);
     }
   };
 
@@ -68,23 +73,29 @@ const ReservationPage = () => {
       <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-4xl flex space-x-6">
         {/* Class Details */}
         <div className="w-1/2">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Class Details</h1>
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">
+            Class Details
+          </h1>
           <p className="text-gray-600">Class Name: {classDetails.class_name}</p>
-          <p className="text-gray-600">Description: {classDetails.description}</p>
+          <p className="text-gray-600">
+            Description: {classDetails.description}
+          </p>
           <p className="text-gray-600">Day: {classDetails.day}</p>
           <p className="text-gray-600">Time: {classDetails.time}</p>
           <p className="text-gray-600">Cost: ${classDetails.cost}</p>
-          <p className="text-gray-600">Capacity: {classDetails.current_capacity}/{classDetails.max_capacity}</p>
+          <p className="text-gray-600">
+            Capacity: {classDetails.current_capacity}/
+            {classDetails.max_capacity}
+          </p>
         </div>
 
         {/* Reservation Form */}
         <div className="w-1/2">
-
-        <CheckoutButton classId={class_id}/>
+          <CheckoutButton classId={class_id} />
 
           {/* <h1 className="text-2xl font-bold text-gray-800 mb-4">Verify your email</h1> */}
           {/* <form onSubmit={handleSubmit}> */}
-            {/* <div className="mb-4">
+          {/* <div className="mb-4">
               <label className="block text-gray-700">First Name</label>
               <input
                 type="text"
@@ -117,14 +128,13 @@ const ReservationPage = () => {
                 required
               />
             </div> */}
-            
-            {/* <button
+
+          {/* <button
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
             >
               Checkout
             </button> */}
-
 
           {/* </form> */}
         </div>
