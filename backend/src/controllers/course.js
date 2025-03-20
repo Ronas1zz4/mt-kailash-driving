@@ -86,7 +86,9 @@ const getCourseById = async (req, res) => {
 };
 
 const updateCourseById = async (req, res) => {
+  let transaction;
   try {
+    transaction = await sequelize.transaction();
     const { id } = req.params;
     const course = await Course.findByPk(id);
     if (!course) {
@@ -94,6 +96,8 @@ const updateCourseById = async (req, res) => {
         .status(404)
         .json({ success: false, message: "Course not found" });
     }
+
+    let img = course.img;
     const {
       courseName,
       description,
@@ -103,17 +107,35 @@ const updateCourseById = async (req, res) => {
       days,
       time,
     } = req.body;
+    if (req.file) {
+      img = req.file.filename;
+    }
     const updatedCourse = await course.update(
-      courseName,
-      description,
-      price,
-      maxStudents,
-      currentStudents,
-      days,
-      time
+      {
+        courseName,
+        description,
+        price,
+        maxStudents,
+        currentStudents,
+        days,
+        time,
+        img,
+      },
+      { transaction }
     );
+    if (req.file && course.img) {
+      const oldFilePath = path.join(
+        __dirname,
+        `../../uploads/courses/${course.img}`
+      );
+      if (fs.existsSync(oldFilePath)) {
+        await fs.promises.unlink(oldFilePath);
+      }
+    }
+    await transaction.commit();
     return res.status(200).json({ success: true, data: updatedCourse });
   } catch (error) {
+    await transaction.rollback();
     return res.status(500).json({ success: false, message: error.message });
   }
 };
