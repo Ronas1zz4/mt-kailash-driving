@@ -268,6 +268,87 @@ router.post("/", checkAuth, upload.single("image"), createCourse);
  *                   example: Internal server error
  */
 router.get("/:id", getCourseById);
+/**
+ * @swagger
+ * /api/v1/courses/{id}:
+ *   put:
+ *     summary: Update course by ID
+ *     description: Updates the details of a specific course, including optional image updates.
+ *     tags:
+ *       - Courses
+ *     operationId: updateCourseById
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: The ID of the course to update
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               courseName:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               price:
+ *                 type: number
+ *               maxStudents:
+ *                 type: integer
+ *               currentStudents:
+ *                 type: integer
+ *               days:
+ *                 type: string
+ *               time:
+ *                 type: string
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *     responses:
+ *       200:
+ *         description: Successfully updated the course details
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: integer
+ *                     courseName:
+ *                       type: string
+ *                     description:
+ *                       type: string
+ *                     price:
+ *                       type: number
+ *                     maxStudents:
+ *                       type: integer
+ *                     currentStudents:
+ *                       type: integer
+ *                     days:
+ *                       type: string
+ *                     time:
+ *                       type: string
+ *                     img:
+ *                       type: string
+ *                       description: Image filename
+ *       400:
+ *         description: Invalid request parameters
+ *       404:
+ *         description: Course not found
+ *       500:
+ *         description: Server error
+ */
 router.put("/:id", checkAuth, updateCourseById);
 /**
  * @swagger
