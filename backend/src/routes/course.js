@@ -349,7 +349,7 @@ router.get("/:id", getCourseById);
  *       500:
  *         description: Server error
  */
-router.put("/:id", checkAuth, updateCourseById);
+router.put("/:id", checkAuth, upload.single("image"), updateCourseById);
 /**
  * @swagger
  * /api/v1/courses/{id}:

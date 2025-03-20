@@ -1,4 +1,4 @@
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
 const path = require("path");
 const fs = require("fs");
 const { Course, sequelize } = require("../models");
@@ -99,29 +99,31 @@ const updateCourseById = async (req, res) => {
 
     let img = course.img;
     const {
-      courseName,
+      name,
       description,
       price,
       maxStudents,
-      currentStudents,
-      days,
+      status,
+      startDate,
+      endDate,
       time,
     } = req.body;
     if (req.file) {
       img = req.file.filename;
     }
-    const updatedCourse = await course.update(
+    await Course.update(
       {
-        courseName,
+        name,
         description,
         price,
         maxStudents,
-        currentStudents,
-        days,
+        status,
+        startDate,
+        endDate,
         time,
         img,
       },
-      { transaction }
+      { where: { id }, transaction }
     );
     if (req.file && course.img) {
       const oldFilePath = path.join(
@@ -133,7 +135,9 @@ const updateCourseById = async (req, res) => {
       }
     }
     await transaction.commit();
-    return res.status(200).json({ success: true, data: updatedCourse });
+    return res
+      .status(200)
+      .json({ success: true, message: "Course Updated Successfully" });
   } catch (error) {
     await transaction.rollback();
     return res.status(500).json({ success: false, message: error.message });
